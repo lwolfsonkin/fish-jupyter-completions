@@ -31,9 +31,7 @@ function __fish_jupyter_using_command
   set cmd (__fish_jupyter_get_cmd)
 
   if set -q cmd[2..-1]
-    # echo "$cmd" 1>&2
     set cmd $cmd[2..-1]
-    # echo "$cmd" 1>&2
 
     if [ $prefix != 0 ]
       if not set -q cmd[1..(count $cmd_to_match)]
@@ -41,9 +39,6 @@ function __fish_jupyter_using_command
       end
       set cmd $cmd[1..(count $cmd_to_match)]
     end
-
-    # echo "$cmd" 1>&2
-    # cprintf '<b><fg:red>%s</b></fg>' "$cmd_to_match" 1>&2
 
     if [ "$cmd_to_match" = "$cmd" ]
       return 0
@@ -86,10 +81,11 @@ function __fish_jupyter_to_format_enum
 end
 
 
-
 ############
 #  macros  #
 ############
+
+# general macros
 
 function __fish_jupyter_modifier_debug
   complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l debug -d 'set log level to logging.DEBUG (maximize logging output)'
@@ -179,22 +175,20 @@ function __fish_jupyter_modifier_ssh
 end
 
 
-
 ############
 # commands #
 ############
 
-# general options
+# universal options
 complete -f -c jupyter -l help -s h -d 'Display the manual of a jupyter command'
 
-# unadorned options
+# subcommandless options
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l version -d 'show the jupyter command\'s version and exit'
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l config-dir -d 'show Jupyter config dir'
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l data-dir -d 'show Jupyter data dir'
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l runtime-dir -d 'show Jupyter runtime dir'
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l paths -d 'show all Jupyter paths. Add --json for machine-readable format.'
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l json -d 'output paths as machine-readable json'
-
 
 # bundlerextension
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'bundlerextension' -d 'Work with Jupyter bundler extensions'
@@ -205,9 +199,9 @@ complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'console' -d 'The Ju
 __fish_jupyter_modifier_debug console
 __fish_jupyter_modifier_generate_config console
 __fish_jupyter_modifier_y console
-__fish_jupyter_modifier_existing qtconsole
-__fish_jupyter_modifier_confirm_exit qtconsole
-__fish_jupyter_modifier_no_confirm_exit qtconsole
+__fish_jupyter_modifier_existing console
+__fish_jupyter_modifier_confirm_exit console
+__fish_jupyter_modifier_no_confirm_exit console
 complete -f -c jupyter -n '__fish_jupyter_using_command console' -l simple-prompt -d 'Force simple minimal prompt using `raw_input`'
 complete -f -c jupyter -n '__fish_jupyter_using_command console' -l no-simple-prompt -d 'Use a rich interactive prompt with prompt_toolkit'
 __fish_jupyter_modifier_log_level console
