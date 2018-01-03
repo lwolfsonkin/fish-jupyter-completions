@@ -1,10 +1,15 @@
-function __fish_jupyter_get_cmd
+function __fish_jupyter_get_cmd -a include_opts
   for c in (commandline -opc)
     if not string match -q -- '-*' $c
       echo $c
     else
       # early stop once we've seen a `-*` modifier
-      return
+      # (unless we marked the `include_opts` flag)
+      if [ $include_opts != 0 ]
+        echo $c
+      else
+        return
+      end
     end
   end
 end
@@ -19,16 +24,19 @@ end
 
 function __fish_jupyter_using_command
   set prefix 0
+  set include_opts 0
   getopts $argv | while read -l key option
     switch $key
       case _
         set cmd_to_match $cmd_to_match $option
       case prefix
         set prefix 1
+      case include_opts
+        set include_opts 1
     end
   end
 
-  set cmd (__fish_jupyter_get_cmd)
+  set cmd (__fish_jupyter_get_cmd $include_opts)
 
   if set -q cmd[2..-1]
     set cmd $cmd[2..-1]
@@ -219,11 +227,11 @@ __fish_jupyter_modifier_ssh console
 # kernelspec
 complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'kernelspec' -d 'Manage Jupyter kernel specifications'
 
-complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'list' -d 'List installed kernel specifications'
-complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'install' -d 'Install a kernel specification directory'
-complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'uninstall' -d 'Alias for remove'
-complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'remove' -d 'Remove one or more Jupyter kernelspecs by name'
-complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'install-self' -d '[DEPRECATED] Install the IPython kernel spec directory for this Python'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec --include_opts ' -a 'list' -d 'List installed kernel specifications'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec --include_opts ' -a 'install' -d 'Install a kernel specification directory'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec --include_opts ' -a 'uninstall' -d 'Alias for remove'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec --include_opts ' -a 'remove' -d 'Remove one or more Jupyter kernelspecs by name'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec --include_opts ' -a 'install-self' -d '[DEPRECATED] Install the IPython kernel spec directory for this Python'
 
 ## kernelspec list
 __fish_jupyter_modifier_debug kernelspec list
@@ -291,11 +299,11 @@ complete -xc jupyter -n '__fish_jupyter_using_command nbconvert' -l nbformat -a 
 # nbextension
 complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'nbextension' -d 'Work with Jupyter notebook extensions'
 
-complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'install' -d 'Install an nbextension'
-complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'enable' -d 'Enable an nbextension'
-complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'disable' -d 'Disable an nbextension'
-complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'uninstall' -d 'Uninstall an nbextension'
-complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'list' -d 'List nbextensions'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension --include_opts' -a 'install' -d 'Install an nbextension'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension --include_opts' -a 'enable' -d 'Enable an nbextension'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension --include_opts' -a 'disable' -d 'Disable an nbextension'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension --include_opts' -a 'uninstall' -d 'Uninstall an nbextension'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension --include_opts' -a 'list' -d 'List nbextensions'
 
 ## nbextension enable
 __fish_jupyter_modifier_debug nbextension enable
@@ -342,9 +350,9 @@ complete -c jupyter -n '__fish_jupyter_using_command nbextension uninstall' -l d
 
 # notebook
 complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'notebook' -d 'The Jupyter HTML Notebook'
-complete -xc jupyter -n '__fish_jupyter_using_command notebook' -a 'list' -d 'List currently running notebook servers'
-complete -xc jupyter -n '__fish_jupyter_using_command notebook' -a 'stop' -d 'Stop currently running notebook server for a given port'
-complete -xc jupyter -n '__fish_jupyter_using_command notebook' -a 'password' -d 'Set a password for the notebook server'
+complete -xc jupyter -n '__fish_jupyter_using_command notebook --include_opts' -a 'list' -d 'List currently running notebook servers'
+complete -xc jupyter -n '__fish_jupyter_using_command notebook --include_opts' -a 'stop' -d 'Stop currently running notebook server for a given port'
+complete -xc jupyter -n '__fish_jupyter_using_command notebook --include_opts' -a 'password' -d 'Set a password for the notebook server'
 
 __fish_jupyter_modifier_debug notebook
 __fish_jupyter_modifier_generate_config notebook
