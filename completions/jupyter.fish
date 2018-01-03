@@ -92,15 +92,15 @@ function __fish_jupyter_modifier_debug
 end
 
 function __fish_jupyter_modifier_log_level
-  complete -xc jupyter -n "__fish_jupyter_using_command $argv" -l log-level -a '0 10 20 30 40 50 DEBUG INFO WARN ERROR CRITICAL' -d 'Set the log level by value or name.'
+  complete -xc jupyter -n "__fish_jupyter_using_command $argv" -l log-level -a '0 10 20 30 40 50 DEBUG INFO WARN ERROR CRITICAL' -d 'Set the log level by value or name'
 end
 
 function __fish_jupyter_modifier_config
-  complete -r -c jupyter -n "__fish_jupyter_using_command $argv" -l config -d 'Full path of a config file.'
+  complete -r -c jupyter -n "__fish_jupyter_using_command $argv" -l config -d 'Full path of a config file'
 end
 
 function __fish_jupyter_modifier_y
-  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -s y -d 'Answer yes to any questions instead of prompting.'
+  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -s y -d 'Answer yes to any questions instead of prompting'
 end
 
 function __fish_jupyter_modifier_generate_config
@@ -131,11 +131,11 @@ function __fish_jupyter_modifier_existing
 end
 
 function __fish_jupyter_modifier_confirm_exit
-  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l confirm-exit -d 'Set to display confirmation dialog on exit. You can always use \'exit\' or \'quit\', to force a direct exit without any confirmation. This can also be set in the config file by setting `c.JupyterConsoleApp.confirm_exit`.'
+  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l confirm-exit -d 'Set to display confirmation dialog on exit. You can always use \'exit\' or \'quit\', to force a direct exit without any confirmation. This can also be set in the config file by setting `c.JupyterConsoleApp.confirm_exit`'
 end
 
 function __fish_jupyter_modifier_no_confirm_exit
-  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l no-confirm-exit -d 'Don\'t prompt the user when exiting. This will terminate the kernel if it is owned by the frontend, and leave it alive if it is external. This can also be set in the config file by setting `c.JupyterConsoleApp.confirm_exit`.'
+  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l no-confirm-exit -d 'Don\'t prompt the user when exiting. This will terminate the kernel if it is owned by the frontend, and leave it alive if it is external. This can also be set in the config file by setting `c.JupyterConsoleApp.confirm_exit`'
 end
 
 function __fish_jupyter_modifier_ip
@@ -167,11 +167,11 @@ function __fish_jupyter_modifier_f
 end
 
 function __fish_jupyter_modifier_kernel
-  complete -xc jupyter -n "__fish_jupyter_using_command $argv" -l kernel -a '(__fish_jupyter_kernel_list)' -d 'The name of the default kernel to start.'
+  complete -xc jupyter -n "__fish_jupyter_using_command $argv" -l kernel -a '(__fish_jupyter_kernel_list)' -d 'The name of the default kernel to start'
 end
 
 function __fish_jupyter_modifier_ssh
-  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l ssh -d 'The SSH server to use to connect to the kernel.'
+  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l ssh -d 'The SSH server to use to connect to the kernel'
 end
 
 
@@ -187,7 +187,7 @@ complete -f -c jupyter -n '__fish_jupyter_needs_command' -l version -d 'show the
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l config-dir -d 'show Jupyter config dir'
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l data-dir -d 'show Jupyter data dir'
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l runtime-dir -d 'show Jupyter runtime dir'
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -l paths -d 'show all Jupyter paths. Add --json for machine-readable format.'
+complete -f -c jupyter -n '__fish_jupyter_needs_command' -l paths -d 'show all Jupyter paths. Add --json for machine-readable format'
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l json -d 'output paths as machine-readable json'
 
 # bundlerextension
@@ -372,9 +372,9 @@ complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'qtconsole' -d 'The Ju
 __fish_jupyter_modifier_debug qtconsole
 __fish_jupyter_modifier_generate_config qtconsole
 __fish_jupyter_modifier_y qtconsole
-complete -f -c jupyter -n '__fish_jupyter_using_command qtconsole' -l plain -d 'Disable rich text support.'
-complete -f -c jupyter -n '__fish_jupyter_using_command qtconsole' -l banner -d 'Display a banner upon starting the QtConsole.'
-complete -f -c jupyter -n '__fish_jupyter_using_command qtconsole' -l no-banner -d 'Don\'t display a banner upon starting the QtConsole.'
+complete -f -c jupyter -n '__fish_jupyter_using_command qtconsole' -l plain -d 'Disable rich text support'
+complete -f -c jupyter -n '__fish_jupyter_using_command qtconsole' -l banner -d 'Display a banner upon starting the QtConsole'
+complete -f -c jupyter -n '__fish_jupyter_using_command qtconsole' -l no-banner -d 'Don\'t display a banner upon starting the QtConsole'
 __fish_jupyter_modifier_existing qtconsole
 __fish_jupyter_modifier_confirm_exit qtconsole
 __fish_jupyter_modifier_no_confirm_exit qtconsole
