@@ -1,6 +1,6 @@
 # jupyter completions for Fish
 
-Fish shell completions for `jupyter`, including its subcommands.
+Fish shell completions for `jupyter`, including its subcommands and options.
 
 These completions are compatible with jupyter 4.4.0 (and likely other versions as well, but untested for those versions)
 
@@ -13,7 +13,7 @@ There are several ways you can install these shell completions.
 Just run:
 
 ```
-fisher lwolfsonkin/fish-jupyter
+fisher lwolfsonkin/fish-jupyter-completions
 ```
 
 ### Manually
@@ -26,4 +26,9 @@ directory.
 
 MIT
 
+## Acknowledgments
+
+Repo format attributed to [brgmnn/fish-docker-compose][2]
+
 [1]: https://github.com/fisherman/fisherman
+[2]: https://github.com/brgmnn/fish-docker-compose
