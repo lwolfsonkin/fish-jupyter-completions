@@ -88,6 +88,10 @@ function __fish_jupyter_to_format_enum
   end
 end
 
+function __fish_jupyter_notebook_list_port
+  jupyter notebook list --jsonlist | python3 -c 'import os; import sys; import json; print(*("{0}\\t{1}".format(nb["port"], nb["notebook_dir"].replace(os.environ["HOME"],"~")) for nb in json.loads(sys.stdin.read())), sep="\\n")'
+end
+
 
 ############
 #  macros  #
@@ -382,11 +386,12 @@ __fish_jupyter_modifier_log_level notebook list
 __fish_jupyter_modifier_config notebook list
 
 ## notebook stop
-__fish_jupyter_modifier_debug notebook stop
-__fish_jupyter_modifier_generate_config notebook stop
-__fish_jupyter_modifier_y notebook stop
-__fish_jupyter_modifier_log_level notebook stop
-__fish_jupyter_modifier_config notebook stop
+complete -f -c jupyter -n "__fish_jupyter_using_command notebook stop --prefix" -a '(__fish_jupyter_notebook_list_port)'
+__fish_jupyter_modifier_debug notebook stop --prefix
+__fish_jupyter_modifier_generate_config notebook stop --prefix
+__fish_jupyter_modifier_y notebook stop --prefix
+__fish_jupyter_modifier_log_level notebook stop --prefix
+__fish_jupyter_modifier_config notebook stop --prefix
 
 ## notebook password
 __fish_jupyter_modifier_debug notebook password
