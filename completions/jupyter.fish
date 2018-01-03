@@ -120,20 +120,20 @@ function __fish_jupyter_modifier_generate_config
 end
 
 function __fish_jupyter_modifier_user
-  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l 'user' -d 'Apply the operation only for the given user'
+  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l user -d 'Apply the operation only for the given user'
 end
 
 function __fish_jupyter_modifier_sys_prefix
-  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l 'sys-prefix' -d 'Use sys.prefix as the prefix for installing nbextensions (for environments, packaging)'
+  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l sys-prefix -d 'Use sys.prefix as the prefix for installing nbextensions (for environments, packaging)'
 end
 
 function __fish_jupyter_modifier_system
-  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l 'system' -d 'Apply the operation system-wide'
+  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l system -d 'Apply the operation system-wide'
 end
 
 function __fish_jupyter_modifier_python
-  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l 'py' -d 'Install from a Python package'
-  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l 'python' -d 'Install from a Python package'
+  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l py -d 'Install from a Python package'
+  complete -f -c jupyter -n "__fish_jupyter_using_command $argv" -l python -d 'Install from a Python package'
 end
 
 # console macros
@@ -244,12 +244,12 @@ __fish_jupyter_modifier_config kernelspec list
 complete -f -c jupyter -n '__fish_jupyter_using_command kernelspec list' -l json -d 'Output spec name and location as machine-readable json'
 
 ## kernelspec install
-complete -f -c jupyter -n "__fish_jupyter_using_command kernelspec install" -l 'user' -d 'Install to the per-user kernel registry'
-complete -f -c jupyter -n "__fish_jupyter_using_command kernelspec install" -l 'replace' -d 'Replace any existing kernel spec with this name'
+complete -f -c jupyter -n "__fish_jupyter_using_command kernelspec install" -l user -d 'Install to the per-user kernel registry'
+complete -f -c jupyter -n "__fish_jupyter_using_command kernelspec install" -l replace -d 'Replace any existing kernel spec with this name'
 __fish_jupyter_modifier_sys_prefix kernelspec install
 __fish_jupyter_modifier_debug kernelspec install
-complete -f -c jupyter -n "__fish_jupyter_using_command kernelspec install" -l 'name' -d 'Install the kernel spec with this name'
-complete -f -c jupyter -n "__fish_jupyter_using_command kernelspec install" -l 'prefix' -d 'Specify a prefix to install to, e.g. an env. The kernelspec will be installed in PREFIX/share/jupyter/kernels/'
+complete -f -c jupyter -n "__fish_jupyter_using_command kernelspec install" -l name -d 'Install the kernel spec with this name'
+complete -f -c jupyter -n "__fish_jupyter_using_command kernelspec install" -l prefix -d 'Specify a prefix to install to, e.g. an env. The kernelspec will be installed in PREFIX/share/jupyter/kernels/'
 __fish_jupyter_modifier_log_level kernelspec install
 __fish_jupyter_modifier_config kernelspec install
 
@@ -323,7 +323,7 @@ __fish_jupyter_modifier_user nbextension disable
 __fish_jupyter_modifier_system nbextension disable
 __fish_jupyter_modifier_sys_prefix nbextension disable
 __fish_jupyter_modifier_python nbextension disable
-complete -f -c jupyter -n '__fish_jupyter_using_command nbextension disable' -l 'section' -d 'Which config section to add the extension to, \'common\' will affect all pages'
+complete -f -c jupyter -n '__fish_jupyter_using_command nbextension disable' -l section -d 'Which config section to add the extension to, \'common\' will affect all pages'
 
 ## nbextension install
 __fish_jupyter_modifier_debug nbextension install
