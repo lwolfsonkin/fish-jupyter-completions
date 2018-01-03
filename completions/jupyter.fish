@@ -92,7 +92,7 @@ function __fish_jupyter_modifier_debug
 end
 
 function __fish_jupyter_modifier_log_level
-  complete -f -r -c jupyter -n "__fish_jupyter_using_command $argv" -l log-level -a '0 10 20 30 40 50 DEBUG INFO WARN ERROR CRITICAL' -d 'Set the log level by value or name.'
+  complete -xc jupyter -n "__fish_jupyter_using_command $argv" -l log-level -a '0 10 20 30 40 50 DEBUG INFO WARN ERROR CRITICAL' -d 'Set the log level by value or name.'
 end
 
 function __fish_jupyter_modifier_config
@@ -143,7 +143,7 @@ function __fish_jupyter_modifier_ip
 end
 
 function __fish_jupyter_modifier_transport
-  complete -f -r -c jupyter -n "__fish_jupyter_using_command $argv" -l transport -a 'tcp ipc' -d 'Default: \'tcp\''
+  complete -xc jupyter -n "__fish_jupyter_using_command $argv" -l transport -a 'tcp ipc' -d 'Default: \'tcp\''
 end
 
 function __fish_jupyter_modifier_hb
@@ -167,7 +167,7 @@ function __fish_jupyter_modifier_f
 end
 
 function __fish_jupyter_modifier_kernel
-  complete -f -r -c jupyter -n "__fish_jupyter_using_command $argv" -l kernel -a '(__fish_jupyter_kernel_list)' -d 'The name of the default kernel to start.'
+  complete -xc jupyter -n "__fish_jupyter_using_command $argv" -l kernel -a '(__fish_jupyter_kernel_list)' -d 'The name of the default kernel to start.'
 end
 
 function __fish_jupyter_modifier_ssh
@@ -191,10 +191,10 @@ complete -f -c jupyter -n '__fish_jupyter_needs_command' -l paths -d 'show all J
 complete -f -c jupyter -n '__fish_jupyter_needs_command' -l json -d 'output paths as machine-readable json'
 
 # bundlerextension
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'bundlerextension' -d 'Work with Jupyter bundler extensions'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'bundlerextension' -d 'Work with Jupyter bundler extensions'
 
 # console
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'console' -d 'The Jupyter terminal-based Console'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'console' -d 'The Jupyter terminal-based Console'
 
 __fish_jupyter_modifier_debug console
 __fish_jupyter_modifier_generate_config console
@@ -217,13 +217,13 @@ __fish_jupyter_modifier_kernel console
 __fish_jupyter_modifier_ssh console
 
 # kernelspec
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'kernelspec' -d 'Manage Jupyter kernel specifications'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'kernelspec' -d 'Manage Jupyter kernel specifications'
 
-complete -f -c jupyter -n '__fish_jupyter_using_command kernelspec' -a 'list' -d 'List installed kernel specifications'
-complete -f -c jupyter -n '__fish_jupyter_using_command kernelspec' -a 'install' -d 'Install a kernel specification directory'
-complete -f -c jupyter -n '__fish_jupyter_using_command kernelspec' -a 'uninstall' -d 'Alias for remove'
-complete -f -c jupyter -n '__fish_jupyter_using_command kernelspec' -a 'remove' -d 'Remove one or more Jupyter kernelspecs by name'
-complete -f -c jupyter -n '__fish_jupyter_using_command kernelspec' -a 'install-self' -d '[DEPRECATED] Install the IPython kernel spec directory for this Python'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'list' -d 'List installed kernel specifications'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'install' -d 'Install a kernel specification directory'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'uninstall' -d 'Alias for remove'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'remove' -d 'Remove one or more Jupyter kernelspecs by name'
+complete -xc jupyter -n '__fish_jupyter_using_command kernelspec' -a 'install-self' -d '[DEPRECATED] Install the IPython kernel spec directory for this Python'
 
 ## kernelspec list
 __fish_jupyter_modifier_debug kernelspec list
@@ -261,10 +261,10 @@ __fish_jupyter_modifier_config kernelspec uninstall --prefix
 
 
 # migrate
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'migrate' -d 'Migrate configuration and data from .ipython prior to 4.0 to Jupyter locations'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'migrate' -d 'Migrate configuration and data from .ipython prior to 4.0 to Jupyter locations'
 
 # nbconvert
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'nbconvert' -d 'This application is used to convert notebook files (*.ipynb) to various other formats'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'nbconvert' -d 'This application is used to convert notebook files (*.ipynb) to various other formats'
 
 __fish_jupyter_modifier_debug nbconvert
 __fish_jupyter_modifier_generate_config nbconvert
@@ -278,24 +278,24 @@ complete -f -c jupyter -n '__fish_jupyter_using_command nbconvert' -l clear-outp
 complete -f -c jupyter -n '__fish_jupyter_using_command nbconvert' -l no-prompt -d 'Exclude input and output prompts from converted document'
 __fish_jupyter_modifier_log_level nbconvert
 __fish_jupyter_modifier_config nbconvert
-complete -f -r -c jupyter -n '__fish_jupyter_using_command nbconvert' -l to -a "(__fish_jupyter_to_format_enum)" -d 'The export format to be used, either one of the built-in formats, or a dotted object name that represents the import path for an `Exporter` class'
+complete -xc jupyter -n '__fish_jupyter_using_command nbconvert' -l to -a "(__fish_jupyter_to_format_enum)" -d 'The export format to be used, either one of the built-in formats, or a dotted object name that represents the import path for an `Exporter` class'
 complete -f -c jupyter -n '__fish_jupyter_using_command nbconvert' -l template -d 'Name of the template file to use'
 complete -f -c jupyter -n '__fish_jupyter_using_command nbconvert' -l writer -d 'Writer class used to write the  results of the conversion'
 complete -f -c jupyter -n '__fish_jupyter_using_command nbconvert' -l post -d 'PostProcessor class used to write the results of the conversion'
 complete -f -c jupyter -n '__fish_jupyter_using_command nbconvert' -l output -d 'overwrite base name use for output files. can only be used when converting one notebook at a time'
 complete -f -c jupyter -n '__fish_jupyter_using_command nbconvert' -l output-dir -d 'Directory to write output(s) to. Defaults to output to the directory of each notebook. To recover previous default behaviour (outputting to the current working directory) use . as the flag value'
 complete -f -c jupyter -n '__fish_jupyter_using_command nbconvert' -l reveal-prefix -d 'The URL prefix for reveal.js. This can be a a relative URL for a local copy of reveal.js, or point to a CDN. For speaker notes to work, a local reveal.js prefix must be used'
-complete -f -r -c jupyter -n '__fish_jupyter_using_command nbconvert' -l nbformat -a '{1,2,3,4}' -d 'The nbformat version to write. Use this to downgrade notebooks'
+complete -xc jupyter -n '__fish_jupyter_using_command nbconvert' -l nbformat -a '{1,2,3,4}' -d 'The nbformat version to write. Use this to downgrade notebooks'
 
 
 # nbextension
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'nbextension' -d 'Work with Jupyter notebook extensions'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'nbextension' -d 'Work with Jupyter notebook extensions'
 
-complete -f -c jupyter -n '__fish_jupyter_using_command nbextension' -a 'install' -d 'Install an nbextension'
-complete -f -c jupyter -n '__fish_jupyter_using_command nbextension' -a 'enable' -d 'Enable an nbextension'
-complete -f -c jupyter -n '__fish_jupyter_using_command nbextension' -a 'disable' -d 'Disable an nbextension'
-complete -f -c jupyter -n '__fish_jupyter_using_command nbextension' -a 'uninstall' -d 'Uninstall an nbextension'
-complete -f -c jupyter -n '__fish_jupyter_using_command nbextension' -a 'list' -d 'List nbextensions'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'install' -d 'Install an nbextension'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'enable' -d 'Enable an nbextension'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'disable' -d 'Disable an nbextension'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'uninstall' -d 'Uninstall an nbextension'
+complete -xc jupyter -n '__fish_jupyter_using_command nbextension' -a 'list' -d 'List nbextensions'
 
 ## nbextension enable
 __fish_jupyter_modifier_debug nbextension enable
@@ -341,10 +341,10 @@ complete -c jupyter -n '__fish_jupyter_using_command nbextension uninstall' -l d
 
 
 # notebook
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'notebook' -d 'The Jupyter HTML Notebook'
-complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -a 'list' -d 'List currently running notebook servers'
-complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -a 'stop' -d 'Stop currently running notebook server for a given port'
-complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -a 'password' -d 'Set a password for the notebook server'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'notebook' -d 'The Jupyter HTML Notebook'
+complete -xc jupyter -n '__fish_jupyter_using_command notebook' -a 'list' -d 'List currently running notebook servers'
+complete -xc jupyter -n '__fish_jupyter_using_command notebook' -a 'stop' -d 'Stop currently running notebook server for a given port'
+complete -xc jupyter -n '__fish_jupyter_using_command notebook' -a 'password' -d 'Set a password for the notebook server'
 
 ## notebook list
 complete -f -c jupyter -n '__fish_jupyter_using_command notebook list' -l jsonlist -d 'Produce machine-readable JSON list output'
@@ -367,7 +367,7 @@ __fish_jupyter_modifier_log_level notebook password
 __fish_jupyter_modifier_config notebook password
 
 # qtconsole
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'qtconsole' -d 'The Jupyter QtConsole'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'qtconsole' -d 'The Jupyter QtConsole'
 
 __fish_jupyter_modifier_debug qtconsole
 __fish_jupyter_modifier_generate_config qtconsole
@@ -383,7 +383,7 @@ __fish_jupyter_modifier_config qtconsole
 complete -f -c jupyter -n '__fish_jupyter_using_command qtconsole' -l style -d 'If not empty, use this Pygments style for syntax highlighting. Otherwise, the style sheet is queried for Pygments style information'
 complete -c jupyter -n '__fish_jupyter_using_command qtconsole' -l stylesheet -d 'path to a custom CSS stylesheet'
 complete -f -c jupyter -n '__fish_jupyter_using_command qtconsole' -l editor -d 'A command for invoking a system text editor. If the string contains a {filename} format specifier, it will be used. Otherwise, the filename will be appended to the end the command'
-complete -f -r -c jupyter -n '__fish_jupyter_using_command qtconsole' -l paging -a "(__fish_jupyter_paging_enum)" -d 'The type of paging to use (Default: \'inside\')'
+complete -xc jupyter -n '__fish_jupyter_using_command qtconsole' -l paging -a "(__fish_jupyter_paging_enum)" -d 'The type of paging to use (Default: \'inside\')'
 __fish_jupyter_modifier_ip qtconsole
 __fish_jupyter_modifier_transport qtconsole
 __fish_jupyter_modifier_hb qtconsole
@@ -393,18 +393,18 @@ __fish_jupyter_modifier_stdin qtconsole
 __fish_jupyter_modifier_f qtconsole
 __fish_jupyter_modifier_kernel qtconsole
 __fish_jupyter_modifier_ssh qtconsole
-complete -f -r -c jupyter -n '__fish_jupyter_using_command qtconsole' -l gui-completion -a "(__fish_jupyter_gui_completion_enum)" -d 'The type of completer to use (Default: \'ncurses\')'
+complete -xc jupyter -n '__fish_jupyter_using_command qtconsole' -l gui-completion -a "(__fish_jupyter_gui_completion_enum)" -d 'The type of completer to use (Default: \'ncurses\')'
 
 # run
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'run' -d 'Run Jupyter kernel code'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'run' -d 'Run Jupyter kernel code'
 
 # serverextension
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'serverextension' -d 'Work with Jupyter server extensions'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'serverextension' -d 'Work with Jupyter server extensions'
 
 # troubleshoot
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'troubleshoot'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'troubleshoot'
 
 # trust
-complete -f -c jupyter -n '__fish_jupyter_needs_command' -a 'trust' -d 'Sign one or more Jupyter notebooks with your key, to trust their dynamic (HTML, Javascript) output'
+complete -xc jupyter -n '__fish_jupyter_needs_command' -a 'trust' -d 'Sign one or more Jupyter notebooks with your key, to trust their dynamic (HTML, Javascript) output'
 
 
