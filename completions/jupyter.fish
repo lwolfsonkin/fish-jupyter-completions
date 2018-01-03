@@ -346,6 +346,27 @@ complete -xc jupyter -n '__fish_jupyter_using_command notebook' -a 'list' -d 'Li
 complete -xc jupyter -n '__fish_jupyter_using_command notebook' -a 'stop' -d 'Stop currently running notebook server for a given port'
 complete -xc jupyter -n '__fish_jupyter_using_command notebook' -a 'password' -d 'Set a password for the notebook server'
 
+__fish_jupyter_modifier_debug notebook
+__fish_jupyter_modifier_generate_config notebook
+__fish_jupyter_modifier_y notebook
+complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -l no-browser -d 'Don\'t open the notebook in a browser after startup'
+complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -l pylab -d 'DISABLED: use %pylab or %matplotlib in the notebook to enable matplotlib'
+complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -l no-mathjax -d 'Disable MathJax'
+complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -l allow-root -d 'Allow the notebook to be run from root user'
+__fish_jupyter_modifier_log_level notebook
+__fish_jupyter_modifier_config notebook
+complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -l ip -d 'The IP address the notebook server will listen on (Default: \'localhost\')'
+complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -l port -d 'The port the notebook server will listen on (Default: 8888)'
+complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -l port-retries -d 'The number of additional ports to try if the specified port is not available (Default: 50)'
+__fish_jupyter_modifier_transport notebook
+complete -c jupyter -n '__fish_jupyter_using_command notebook' -l keyfile -d 'The full path to a private key file for usage with SSL/TLS'
+complete -c jupyter -n '__fish_jupyter_using_command notebook' -l certfile -d 'The full path to an SSL/TLS certificate file'
+complete -c jupyter -n '__fish_jupyter_using_command notebook' -l client-ca -d 'The full path to a certificate authority certificate for SSL/TLS client authentication'
+complete -c jupyter -n '__fish_jupyter_using_command notebook' -l notebook-dir -d 'The directory to use for notebooks and kernels'
+complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -l browser -d 'Specify what command to use to invoke a web browser when opening the notebook. If not specified, the default browser will be determined by the `webbrowser` standard library module, which allows setting of the BROWSER environment variable to override it'
+complete -f -c jupyter -n '__fish_jupyter_using_command notebook' -l pylab -d 'DISABLED: use %pylab or %matplotlib in the notebook to enable matplotlib (Default: \'disabled\')'
+
+
 ## notebook list
 complete -f -c jupyter -n '__fish_jupyter_using_command notebook list' -l jsonlist -d 'Produce machine-readable JSON list output'
 complete -f -c jupyter -n '__fish_jupyter_using_command notebook list' -l json -d 'Produce machine-readable JSON object on each line of output'
